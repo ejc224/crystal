@@ -2,11 +2,13 @@
 
 public class Particle{
     double x, y;
-    Pair<Double, Double> particle;
+    static double step = 0.1; // size of move
+    static double max = 10; // size of glass
+    static boolean debugging = false; // to turn comments on and off (true if on, false if off)
+
     public Particle(double x, double y){
         this.x = x;
         this.y = y;
-        particle = new Pair<>(x, y);
     }
     // this method determines the direction the particle is moving in and if it can move that way based on the size of the glass
     public void move(){
@@ -25,112 +27,126 @@ public class Particle{
         double tempX = 0;
         double tempY = 0;
         boolean safe = true; // boolean to track if my logic statements are working correctly
-        // manually putting in the width and length while i figure out World
-        // the glass is 5x5
         switch(direction){ 
             case 1: // SW - x minus 1, y minus 1
-                tempX = x-1;
-                tempY = y-1;
-                if((tempX < 5 && tempX > -5) && (tempY < 5 && tempY > -5)){
-                    x = x-1;
-                    y = y-1;
+                tempX = x-step;
+                tempY = y-step;
+                if((tempX < max && tempX > -max) && (tempY < max && tempY > -max)){
+                    x = tempX;
+                    y = tempY;
                     safe = true;
-                    System.out.println("Moving SW");
+                    if(debugging == true)
+                        System.out.println("Moving SW");
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 2: // W - x minus 1, y stays the same
-                tempX = x-1;
-                if(tempX < 5 && tempX > -5){
-                    x = x-1;
-                    System.out.println("Moving W");
+                tempX = x-step;
+                if(tempX < max && tempX > -max){
+                    x = tempX;
+                    if(debugging == true)
+                        System.out.println("Moving W");
                     safe = true;
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 3: // NW - x minus 1, y plus 1
-                tempX = x-1;
-                tempY = y+1;
-                if((tempX < 5 && tempX > -5) && (tempY < 5 && tempY > -5)){
-                    x = x-1;
-                    y = y+1;
-                    System.out.println("Moving NW");
+                tempX = x-step;
+                tempY = y+step;
+                if((tempX < max && tempX > -max) && (tempY < max && tempY > -max)){
+                    x = tempX;
+                    y = tempY;
+                    if(debugging == true)
+                        System.out.println("Moving NW");
                     safe = true;
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 4: // N - x stays the same, y plus 1
-                tempY = y+1;
-                if(tempY < 5 && tempY > -5){
-                    y = y+1;
-                    System.out.println("Moving N");
+                tempY = y+step;
+                if(tempY < max && tempY > -max){
+                    y = tempY;
+                    if(debugging == true)
+                        System.out.println("Moving N");
                     safe = true;
                 }
                 else{ 
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 5: // NE - x plus 1, y plus 1
-                tempX = x+1;
-                tempY = y+1;
-                if((tempX < 5 && tempX > -5) && (tempY < 5 && tempY > -5)){
-                    x = x+1;
-                    y = y+1;
-                    System.out.println("Moving NE");
+                tempX = x+step;
+                tempY = y+step;
+                if((tempX < max && tempX > -max) && (tempY < max && tempY > -max)){
+                    x = tempX;
+                    y = tempY;
+                    if(debugging == true)
+                        System.out.println("Moving NE");
                     safe = true;
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 6: // E - x plus 1, y stays the same
-                tempX = x+1;
-                if(tempX < 5 && tempX > -5){
-                    x = x+1;
-                    System.out.println("Moving E");
+                tempX = x+step;
+                if(tempX < max && tempX > -max){
+                    x = tempX;
+                    if(debugging == true)
+                        System.out.println("Moving E");
                     safe = true;
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 7: // SE - x plus 1, y minus 1
-                tempX = x+1;
-                tempY = y-1;
-                if((tempX < 5 && tempX > -5) && (tempY < 5 && tempY > -5)){
-                    x = x+1;
-                    y = y-1;
-                    System.out.println("Moving SE");
+                tempX = x+step;
+                tempY = y-step;
+                if((tempX < max && tempX > -max) && (tempY < max && tempY > -max)){
+                    x = tempX;
+                    y = tempY;
+                    if(debugging == true)
+                        System.out.println("Moving SE");
                     safe = true;
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
             case 8: // S - x stays the same, y minus 1
-                tempY = y-1;
-                if(tempY < 5 && tempY > -5){
-                    y = y-1;
-                    System.out.println("Moving S");
+                tempY = y-step;
+                if(tempY < max && tempY > -max){
+                    y = tempY;
+                    if(debugging == true)
+                        System.out.println("Moving S");
                     safe = true;
                 }
                 else{
                     safe = false;
                 }
-                System.out.println("Safe or unsafe move(): "+ safe);
+                if(debugging == true)
+                    System.out.println("Safe or unsafe move(): "+ safe);
                 break;
         }
     }
@@ -138,26 +154,11 @@ public class Particle{
     // to be ustilized in crystal since it returns the distance to be used in testCaptured
     // use pythagorean theorem like when estimating Pi
     public double distance(Particle other){
-        double c2 = Math.pow((x+other.x), 2) + Math.pow((y+other.y), 2); // adding the x and y values of the particle point to the other point to find the distance between the two
+        double c2 = Math.pow((x-other.x), 2) + Math.pow((y-other.y), 2); // adding the x and y values of the particle point to the other point to find the distance between the two
         double hypotenuse = Math.pow(c2, 0.5); 
         return hypotenuse;
     }
     public String toString(){
         return "("+x+", "+y+")";
-    }
-
-    public static void main(String[] args){
-        Particle particle = new Particle(5,2);
-        Particle compare = new Particle(5,4);
-        System.out.println("Particle starting at: "+particle);
-        particle.move();
-        System.out.println(particle.distance(compare));
-        System.out.println("Particle after move(): "+particle);
-        particle.move();
-        System.out.println(particle.distance(compare));
-        System.out.println("Particle after move(): "+particle);
-        particle.move();
-        System.out.println(particle.distance(compare));
-        System.out.println("Particle after move(): "+particle);
     }
 }
